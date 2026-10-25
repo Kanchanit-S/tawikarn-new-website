@@ -29,13 +29,15 @@ export default async function BlogPage() {
         {posts.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-white/20 bg-white/5 p-10 text-center text-stone-400">
             <p className="mb-2">ยังไม่มีบทความ</p>
-            <p className="text-sm">
-              ทีมงานเพิ่มข่าวสารได้เองที่หน้า{" "}
-              <Link href="/studio" className="text-accent-gold underline">
-                /studio
-              </Link>{" "}
-              (ต้องตั้งค่า Sanity ก่อน ดู README)
-            </p>
+            {process.env.NODE_ENV !== "production" && (
+              <p className="text-sm">
+                ทีมงานเพิ่มข่าวสารได้เองที่หน้า{" "}
+                <Link href="/studio" className="text-accent-gold underline">
+                  /studio
+                </Link>{" "}
+                (ต้องตั้งค่า Sanity ก่อน ดู README)
+              </p>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
